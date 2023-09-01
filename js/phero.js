@@ -27,25 +27,28 @@ const btnHandler = async (id) => {
     // card display  
     const cardContainer = document.getElementById('card_container');
     cardContainer.innerHTML = '';
+    // console.log(allCard);
 
     allCard.forEach(card => {
-        console.log(card)
+        // console.log(card)
         const singleCard = document.createElement('div');
         singleCard.classList = 'card bg-base-100 shadow-xl my-10 border p-5';
         singleCard.innerHTML = `
-        <figure><img src="${card.thumbnail}" /></figure> 
-                <div class="flex justify-between items-center px-2 mt-5">
-                    <div class="w-14">
+        <figure><img src="${card.thumbnail}" class="h-[200px] w-full"/>
+        </figure>
+        <div class=" text-white bg-gray-700 text-center py-2 w-52 ml-24 mt-[-40px]"><p>${secondToHour(`${card.others.posted_date}`)}</p></div> 
+             <div class="flex justify-between items-center px-2 mt-5">
+                    <div>
                         <img src=" ${card.authors[0].profile_picture}"
-                        class = "rounded-full"/>
+                        class = "rounded-full w-14 h-14"/>
                     </div>
                     <div class="pl-5 w-[80%]">
                        <p class="text-xl font-bold my-3">${card.title}</p>
-                        <div class="flex justify-between">
+                        <div class="flex justify-start">
                         <h1 class="text-xl font-semibold">${card.authors[0].profile_name}</h1>
-                        <div>${card.authors[0].verified? '<span class ="bg-blue-600 text-2xl text-white px-3 py-1 rounded-full"><i class="fa-solid fa-check"></i></span>' : ""}</div>
+                        <div>${card.authors[0].verified? '<span class ="bg-blue-600 text-xl text-white px-1 rounded-full ml-2"><i class="fa-solid fa-check"></i></span>' : ""}</div>
                         </div>
-                        <h2 class="card-title"><span class="text-xl font-bold">Views:</span> ${card.others.views}</h2>
+                        <h2 class="card-title">${card.others.views}<span class="text-xl">Views</span></h2>
                       </div>
                 </div>
         `;
@@ -53,8 +56,14 @@ const btnHandler = async (id) => {
 
     })
 
-
 }
+// second to minute to hour convert function
+const secondToHour = (second)=>{
+    const minute = parseInt(second / 60);
+    const hour = parseInt(second / 3600);
+    return hour+'h ' + minute + 'm '+ ' ago.';
+}
+// console.log(secondToHour(3600));
 
 
 dataLoad();
