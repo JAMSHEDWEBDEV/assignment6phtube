@@ -29,14 +29,13 @@ const btnHandler = async (id) => {
     cardContainer.innerHTML = '';
     // console.log(allCard);
 
-    allCard.forEach(card => {
-        // console.log(card)
+    allCard.forEach(card => { 
         const singleCard = document.createElement('div');
         singleCard.classList = 'card bg-base-100 shadow-xl my-10 border p-5';
         singleCard.innerHTML = `
         <figure><img src="${card.thumbnail}" class="h-[200px] w-full"/>
         </figure>
-        <div class=" text-white bg-gray-700 text-center py-2 w-52 ml-24 mt-[-40px]"><p>${secondToHour(`${card.others.posted_date}`)}</p></div> 
+        <div class=" text-white text-center py-2 w-52 ml-24 mt-[-40px]">${card.others.posted_date?secondToHour(`${card.others.posted_date}`):""}</div> 
              <div class="flex justify-between items-center px-2 mt-5">
                     <div>
                         <img src=" ${card.authors[0].profile_picture}"
@@ -53,17 +52,20 @@ const btnHandler = async (id) => {
                 </div>
         `;
         cardContainer.appendChild(singleCard);
-
     })
 
 }
 // second to minute to hour convert function
 const secondToHour = (second)=>{
-    const minute = parseInt(second / 60);
-    const hour = parseInt(second / 3600);
-    return hour+'h ' + minute + 'm '+ ' ago.';
+    const hour = Math.floor(second / 3600);
+    const remainingSecond = second % 3600;
+    const minute = Math.floor(remainingSecond / 60);
+    return `<div class="bg-gray-500 py-1">${hour}hrs ${minute}min ago</div>`;
 }
-// console.log(secondToHour(3600));
+
+document.getElementById('click_another_page').addEventListener('click',function(){
+    window.location.href="faq.html";
+})
 
 
 dataLoad();
