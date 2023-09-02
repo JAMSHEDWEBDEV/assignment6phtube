@@ -62,11 +62,11 @@ const secondToHour = (second)=>{
     const minute = Math.floor(remainingSecond / 60);
     return `<div class="bg-gray-500 py-1">${hour}hrs ${minute}min ago</div>`;
 }
-
+// button click to go another html page 
 document.getElementById('click_another_page').addEventListener('click',function(){
     window.location.href="faq.html";
 })
 
 
 dataLoad();
-btnHandler('1001');
+btnHandler('1000');
