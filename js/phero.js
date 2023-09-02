@@ -27,7 +27,6 @@ const btnHandler = async (id) => {
     // card display  
     const cardContainer = document.getElementById('card_container');
     cardContainer.innerHTML = '';
-    // console.log(allCard);
 
     allCard.forEach(card => { 
         const singleCard = document.createElement('div');
@@ -35,7 +34,7 @@ const btnHandler = async (id) => {
         singleCard.innerHTML = `
         <figure><img src="${card.thumbnail}" class="h-[200px] w-full"/>
         </figure>
-        <div class=" text-white text-center py-2 w-52 ml-24 mt-[-40px]">${card.others.posted_date?secondToHour(`${card.others.posted_date}`):""}</div> 
+        <div class=" text-white text-center py-2 w-48 lg:w-52  ml-18 lg:ml-24 mt-[-40px]">${card.others.posted_date?secondToHour(`${card.others.posted_date}`):""}</div> 
              <div class="flex justify-between items-center px-2 mt-5">
                     <div>
                         <img src=" ${card.authors[0].profile_picture}"
