@@ -3,12 +3,10 @@ const dataLoad = async () => {
     const res = await fetch('https://openapi.programming-hero.com/api/videos/categories');
     const data = await res.json();
     const allData = data.data;
-    // console.log(allData);
 
     // button data display
     const buttonContainer = document.getElementById('button_container');
     allData.forEach(category => {
-        // console.log(category);
         const btn = document.createElement('div');
         btn.innerHTML = `
         <button onclick="btnHandler('${category.category_id}')" class="btn hover:bg-red-500 font-medium text-xl hover:text-white">${category.category}</button>
