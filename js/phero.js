@@ -19,7 +19,6 @@ const dataLoad = async () => {
 
 // button handler 
 const btnHandler = async (id) => {
-    // console.log(id);
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const data = await res.json();
     const allCard = data.data;
@@ -27,7 +26,6 @@ const btnHandler = async (id) => {
     // card display  
     const cardContainer = document.getElementById('card_container');
     cardContainer.innerHTML = '';
-
     allCard.forEach(card => { 
         const singleCard = document.createElement('div');
         singleCard.classList = 'card bg-base-100 shadow-xl my-10 border p-5';
